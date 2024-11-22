@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SMTP Test</title>
+  </head>
+  <body>
+    <h1>SMTP Test</h1>
+    <form id="smtpTestForm">
+      <label for="toEmail">To Email:</label>
+      <input
+        type="email"
+        id="toEmail"
+        placeholder="Recipient Email"
+        required
+      /><br /><br />
+
+      <label for="subject">Subject:</label>
+      <input
+        type="text"
+        id="subject"
+        placeholder="Email Subject"
+        required
+      /><br /><br />
+
+      <label for="message">Message:</label>
+      <textarea id="message" placeholder="Your Message" required></textarea
+      ><br /><br />
+
+      <button type="submit">Send Email</button>
+    </form>
+
+    <p id="statusMessage"></p>
+
+    <script>
+      document
+        .getElementById("smtpTestForm")
+        .addEventListener("submit", async function (event) {
+          event.preventDefault();
+
+          const toEmail = document.getElementById("toEmail").value;
+          const subject = document.getElementById("subject").value;
+          const message = document.getElementById("message").value;
+
+          const emailData = {
+            toEmail,
+            subject,
+            message,
+          };
+
+          document.getElementById("statusMessage").textContent =
+            "Sending email...";
+
+          try {
+            const response = await fetch("http://localhost:3000/send-email", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(emailData),
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+              document.getElementById("statusMessage").textContent =
+                "Email sent successfully!";
+            } else {
+              document.getElementById("statusMessage").textContent =
+                "Error: " + result.message;
+            }
+          } catch (error) {
+            document.getElementById("statusMessage").textContent =
+              "Error: " + error.message;
+          }
+        });
+    </script>
+  </body>
+</html>
