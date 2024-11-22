@@ -4,100 +4,66 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nodemailer Example</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #f4f4f9;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-      }
-
-      form {
-        background: #fff;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        max-width: 400px;
-        width: 100%;
-      }
-
-      h1 {
-        text-align: center;
-        margin-bottom: 20px;
-        color: #333;
-      }
-
-      label {
-        display: block;
-        margin-bottom: 5px;
-        font-weight: bold;
-        color: #555;
-      }
-
-      input,
-      textarea {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 15px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        font-size: 14px;
-      }
-
-      button {
-        width: 100%;
-        padding: 10px;
-        background-color: #4caf50;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        font-size: 16px;
-        cursor: pointer;
-      }
-
-      button:hover {
-        background-color: #45a049;
-      }
-
-      #statusMessage {
-        margin-top: 15px;
-        text-align: center;
-        font-size: 14px;
-        color: #555;
-      }
-    </style>
+    <!-- Inkline CSS CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@inkline/inkline/dist/inkline.min.css"
+    />
   </head>
-  <body>
-    <h1>Form</h1>
-    <form id="smtpTestForm">
-      <label for="toEmail">To Email:</label>
-      <input
-        type="email"
-        id="toEmail"
-        placeholder="Recipient Email"
-        required
-      /><br /><br />
+  <body class="i-layout">
+    <div class="container i-m-auto i-py-10">
+      <h1 class="i-text-center i-text-primary">Email Form</h1>
+      <form
+        id="smtpTestForm"
+        class="form i-shadow i-rounded i-p-6 i-bg-white i-mx-auto"
+        style="max-width: 400px;"
+      >
+        <div class="form-group">
+          <label for="toEmail" class="form-label">To Email:</label>
+          <input
+            type="email"
+            id="toEmail"
+            class="form-input"
+            placeholder="Recipient Email"
+            required
+          />
+        </div>
 
-      <label for="subject">Subject:</label>
-      <input
-        type="text"
-        id="subject"
-        placeholder="Email Subject"
-        required
-      /><br /><br />
+        <div class="form-group">
+          <label for="subject" class="form-label">Subject:</label>
+          <input
+            type="text"
+            id="subject"
+            class="form-input"
+            placeholder="Email Subject"
+            required
+          />
+        </div>
 
-      <label for="message">Message:</label>
-      <textarea id="message" placeholder="Your Message" required></textarea
-      ><br /><br />
+        <div class="form-group">
+          <label for="message" class="form-label">Message:</label>
+          <textarea
+            id="message"
+            class="form-input"
+            placeholder="Your Message"
+            rows="4"
+            required
+          ></textarea>
+        </div>
 
-      <button type="submit">Send Email</button>
-    </form>
+        <button
+          type="submit"
+          class="button button--primary button--block"
+        >
+          Send Email
+        </button>
+      </form>
 
-    <p id="statusMessage"></p>
+      <p
+        id="statusMessage"
+        class="i-text-center i-mt-4 i-text-secondary"
+      ></p>
+    </div>
 
     <script>
       document
@@ -140,5 +106,7 @@
           }
         });
     </script>
+    <!-- Inkline JS (optional, only needed for interactivity in some components) -->
+    <script src="https://cdn.jsdelivr.net/npm/@inkline/inkline/dist/inkline.min.js"></script>
   </body>
 </html>
